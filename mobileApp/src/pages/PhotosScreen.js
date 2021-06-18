@@ -7,7 +7,7 @@ import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 // import IpfsSync from '../pages/IpfsSync';
 import PhotoView from '../comm/PhotoView'
 
-const PhotosScreen = () => {
+const PhotosScreen = ({ navigation }) => {
   const [list, setList] = useState([]);
   const [photoViewId, setPhotoViewId ] = useState(null);
 
@@ -66,6 +66,11 @@ const PhotosScreen = () => {
 
   return (!photoViewId) ? (
     <SafeAreaView style={{ flex: 1 }} >
+                 <TouchableOpacity
+            style={styles.button}
+             onPress={() => navigation.navigate('Home')}>
+            <Text>Home</Text>
+           </TouchableOpacity>
       <View style={{ flex: 1, padding: 3 }} >
         <ListCom items={list} type="grid"  shared={{deleteFile: deleteFile, viewPhoto : viewPhoto}}/>
       </View>

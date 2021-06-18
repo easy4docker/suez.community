@@ -1,5 +1,5 @@
 // import * as React from 'react';
-import React, { useEffect }  from 'react';
+import React  from 'react';
 import {
   TouchableOpacity,
   StyleSheet,
@@ -12,10 +12,26 @@ import logo from '../assets/logo.png';
 import * as Linking from 'expo-linking';
 import IpfsSync from './IpfsSync'
 
+import { useFocusEffect } from '@react-navigation/native';
+import {  useStore, useSelector, useDispatch } from 'react-redux';
+
 const HomeScreen = ({ navigation }) => {
-  useEffect((props) => {
-    console.log('home props==>', props)
-  }, []);
+  const dispatch = useDispatch();
+
+  const store = useStore();
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log('navigation===========>', navigation);
+      navigation.navigate('Photoss');
+      dispatch({
+        type: 'addInventory',
+        record: {item : 'item 2'}
+      });
+      return () => {
+      };
+    }, [])
+  );
+  // navigation.navigate('Photossa');
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0275d8' }}>
       <View style={{ flex: 1, padding: 16 }}>
@@ -59,13 +75,18 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
 
           <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Camera')}>
+            <Text>Camera</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
             style={styles.buttonClean}
             onPress={() => {
                 Linking.openURL('exp://exp.host');
             }}>
             <Text style={styles.buttonCleanText}>Clean Application</Text>
            </TouchableOpacity>
-
         </View>
         <Text style={styles.textMiainTitle}>
           

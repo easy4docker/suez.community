@@ -1,17 +1,12 @@
-import React, { useEffect }  from 'react';
-import {
-  SafeAreaView
-} from 'react-native';
-import { HomeScreen, DetailsScreen, ProfileScreen, SettingsScreen, CameraScreen, PhotosScreen} from '../modules';
+import React  from 'react';
+import {  DetailsScreen, CameraScreen, PhotosScreen} from '../modules';
+
 import { createStackNavigator } from '@react-navigation/stack';
-
-import Env from '../setting/Env';
-
-import Styles from '../styles/Main';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import   BottomTab  from './BottomTab';
 
 const HomeStack = (props:any) => {
     const Stack = createStackNavigator();
-    // const env = new Env();
     return (
       <Stack.Navigator
         initialRouteName="Home"
@@ -21,9 +16,9 @@ const HomeStack = (props:any) => {
           headerTitleStyle: { fontWeight: 'bold' },
           headerShown: false
         }}>
-        <Stack.Screen
+       <Stack.Screen
           name="Home"
-          component={HomeScreen}
+          component={BottomTab}
           options={{ title: 'SuEz Coin' }}
         />
         <Stack.Screen
@@ -31,7 +26,20 @@ const HomeStack = (props:any) => {
           component={PhotosScreen}
           options={{ title: 'About SuEz Bidc2' }}
         />
+
         <Stack.Screen
+          name="Camera"
+          component={CameraScreen}
+          options={{ title: 'About SuEz Bidc2' }}
+        />
+
+      <Stack.Screen
+        name="list"
+        component={PhotosScreen}
+        options={{ title: 'Photos 6',
+      }}
+      />
+      <Stack.Screen
           name="Details"
           component={DetailsScreen}
           options={{ title: 'Details Page A' }}
@@ -41,7 +49,7 @@ const HomeStack = (props:any) => {
           component={DetailsScreen}
           options={{ title: 'Details Page B' }}
         />
-      </Stack.Navigator>
+    </Stack.Navigator>
     );
   }
 export default HomeStack;

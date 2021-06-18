@@ -6,8 +6,10 @@ import { BackHandler } from 'react-native';
 
 const CameraScreen = ({ navigation }) => {
   const [isObj, setIsObj] = useState(false);
+  
   useFocusEffect(
     React.useCallback(() => {
+      console.log('navigation===========>', navigation);
       setIsObj(true);
       return () => {
         setIsObj(false);

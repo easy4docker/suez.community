@@ -1,7 +1,7 @@
 // import * as React from 'react';
 import React, { useEffect }  from 'react';
-import PhotosScreen from '../pages/PhotosScreen';
 import { createStackNavigator } from '@react-navigation/stack';
+import { HomeScreen, DetailsScreen, ProfileScreen, SettingsScreen, CameraScreen, PhotosScreen} from '../modules';
 
 const PhotosStack = (props) => {
 
@@ -11,6 +11,7 @@ const PhotosStack = (props) => {
     })();
   }, []);
   return (
+    <>
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
@@ -25,7 +26,14 @@ const PhotosStack = (props) => {
         options={{ title: 'Photos 6',
       }}
       />
+      <Stack.Screen
+          name="Camera"
+          component={CameraScreen}
+          options={{ title: 'Camera' }}
+        />
+
     </Stack.Navigator>
+    </>
   );
 }
 export default PhotosStack;
