@@ -19,18 +19,9 @@ const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const store = useStore();
-  useFocusEffect(
-    React.useCallback(() => {
-      console.log('navigation===========>', navigation);
-      navigation.navigate('Photoss');
-      dispatch({
-        type: 'addInventory',
-        record: {item : 'item 2'}
-      });
-      return () => {
-      };
-    }, [])
-  );
+  store.subscribe(() => {
+    console.log('A006=>' + new Date().toString(), store.getState())
+  });
   // navigation.navigate('Photossa');
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0275d8' }}>
@@ -76,7 +67,7 @@ const HomeScreen = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('Camera')}>
+            onPress={() => navigation.navigate('_Camera')}>
             <Text>Camera</Text>
           </TouchableOpacity>
 

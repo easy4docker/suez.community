@@ -11,12 +11,16 @@ import  Home   from './src/stacks/Home';
 import store from './Store.js';
 import { Provider, useDispatch } from 'react-redux'
 
+import Env from './src/setting/Env.ts';
+
 import { LogBox } from 'react-native';
 
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
 export default function App() {
+  const env = new Env();
+  env.init();
   // const dispatch = useDispatch();
   useEffect(() => {
     store.subscribe(() => {

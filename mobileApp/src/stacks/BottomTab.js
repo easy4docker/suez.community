@@ -4,13 +4,25 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { CameraStack, ScannerStack, PhotosStack } from '../stackPacks';
-import { HomeScreen, CameraScreen, PhotosScreen} from '../modules';
-// import Env from '../setting/Env.ts';
+import { HomeScreen, CameraScreen, PhotosScreen, CameraScanner } from '../modules';
+
+
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function ButtonTab( props ) {
-  // const env = new Env();
-  const [FoodItem, setFootItem] = useState('HomeStack');
-  // env.init();
+
+  useFocusEffect(
+    React.useCallback(() => {
+
+    //  console.log('navigation-8964->', props)
+
+      return () => {
+     //   console.log('navigation-8965->', props)
+      };
+    }, [])
+  );
+
+
   const FootNavigator = [
     {
       key : 0,
@@ -26,42 +38,40 @@ export default function ButtonTab( props ) {
     },
     {
       module : 'Photos',
-      name : 'PhotosStack1',
+      name : 'Photos',
       tabBarLabel: 'My Coins',
       tabBarIcon: ({ color, size }) => (
         <MaterialCommunityIcons name="bitcoin" color={color} size={size} />
       ),
       component : PhotosScreen,
-      initialParams:{v:1},
+      initialParams:{masterName : 'M_Photos'},
       tabBarVisible: true
     },
     {
       module : 'Camera',
-      name : 'CameraStack',
+      name : 'Camera',
       tabBarLabel: 'Camera',
+      initialParams:{masterName : 'M_Camera'},
       tabBarIcon: ({ color, size }) => (
         <MaterialCommunityIcons name="camera" color={color} size={size} />
       ),
       component : CameraScreen,
       tabBarVisible: true
     },
-    { /* <MaterialCommunityIcons name="qrcode-scan" color={color} size={size} />*/
+    { 
       module : 'Scanner',
-      name : 'ScannerStack',
+      name : 'Scanner',
+      initialParams:{masterName : 'M_Scanner'},
       tabBarLabel: 'QR Scan',
       tabBarIcon: ({ color, size }) => (
         <MaterialIcons name="event-available" size={size} color={color} />
       ),
-      component : ScannerStack,
+      component : CameraScanner,
       tabBarVisible: false
     }
   ];
-  const switchMe = () => {
-    console.log('prrrr==111551>', "props.navigation.navigate('Home')");
-   // console.log(props.navigate('Home'));
-  }
+
   useEffect(() => {
-    switchMe();
   }, []);
   const Tab = createBottomTabNavigator();
   return (
@@ -82,8 +92,18 @@ export default function ButtonTab( props ) {
                 tabBarIcon: v.tabBarIcon,
                 headerShown: false,
                 tabBarVisible: (v.tabBarVisible) ? true: false
-
-              }}
+              }} 
+              listeners={({ navigation, route }) => ({
+                tabPress: e => {
+                //  alert(12);
+                   e.preventDefault();
+                  // if (route.state && route.state.routeNames.length > 0) {
+                    console.log('==>', route);
+                    const name = (!route.params || !route.params.masterName) ? route.name : route.params.masterName
+                    navigation.navigate(name);
+                  //}
+                },
+              })}
             />
             )})}
       </Tab.Navigator>

@@ -1,5 +1,5 @@
 import React  from 'react';
-import {  DetailsScreen, CameraScreen, PhotosScreen} from '../modules';
+import {  DetailsScreen, CameraScreen, PhotosScreen, CameraScanner} from '../modules';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
@@ -27,11 +27,7 @@ const HomeStack = (props:any) => {
           options={{ title: 'About SuEz Bidc2' }}
         />
 
-        <Stack.Screen
-          name="Camera"
-          component={CameraScreen}
-          options={{ title: 'About SuEz Bidc2' }}
-        />
+
 
       <Stack.Screen
         name="list"
@@ -47,6 +43,21 @@ const HomeStack = (props:any) => {
         <Stack.Screen
           name="Settings"
           component={DetailsScreen}
+          options={{ title: 'Details Page B' }}
+        />
+        <Stack.Screen
+          name="M_Photos"
+          component={PhotosScreen}
+          options={{ title: 'About SuEz Bidc2' }}
+        />
+        <Stack.Screen
+          name="M_Camera"
+          component={CameraScreen}
+          options={{ title: 'About SuEz Bidc2' }}
+        />        
+        <Stack.Screen
+          name="M_Scanner"
+          component={CameraScanner}
           options={{ title: 'Details Page B' }}
         />
     </Stack.Navigator>
