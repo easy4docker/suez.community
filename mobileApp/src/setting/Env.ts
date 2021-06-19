@@ -15,9 +15,9 @@ export default class Env  {
     const PhotoF = FileSystem.makeDirectoryAsync(this.folders.PhotoF, {intermediates: true});
     const PhotoM = FileSystem.makeDirectoryAsync(this.folders.PhotoM, {intermediates: true});
     Promise.all([Camera, PhotoF, PhotoM]).then((result)=> {
-      console.log('Promis result', result);
+    //  console.log('Promis result', result);
     }).catch ((err) => {
-      console.log('Promise.all', err);
+    //  console.log('Promise.all', err);
     });
     }
 };

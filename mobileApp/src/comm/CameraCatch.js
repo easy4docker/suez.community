@@ -15,7 +15,7 @@ export default function CameraCatch(props) {
   const env= new Env();
   const folders = env.folders;
 
-  console.log('emv=>', env);
+  // console.log('emv=>', env);
 
   useEffect((props) => {
     (async () => {

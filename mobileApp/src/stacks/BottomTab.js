@@ -44,7 +44,7 @@ export default function ButtonTab( props ) {
         <MaterialCommunityIcons name="bitcoin" color={color} size={size} />
       ),
       component : PhotosScreen,
-      initialParams:{masterName : 'M_Photos'},
+      // initialParams:{masterName : 'M_Photos'},
       tabBarVisible: true
     },
     {
@@ -95,10 +95,8 @@ export default function ButtonTab( props ) {
               }} 
               listeners={({ navigation, route }) => ({
                 tabPress: e => {
-                //  alert(12);
                    e.preventDefault();
                   // if (route.state && route.state.routeNames.length > 0) {
-                    console.log('==>', route);
                     const name = (!route.params || !route.params.masterName) ? route.name : route.params.masterName
                     navigation.navigate(name);
                   //}

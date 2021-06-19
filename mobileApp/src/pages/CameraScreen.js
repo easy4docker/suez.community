@@ -9,7 +9,6 @@ const CameraScreen = ({ navigation }) => {
   
   useFocusEffect(
     React.useCallback(() => {
-      console.log('navigation===========>', navigation);
       setIsObj(true);
       return () => {
         setIsObj(false);
