@@ -1,5 +1,5 @@
 import React  from 'react';
-import {  DetailsScreen, CameraScreen, PhotosScreen, CameraScanner} from '../modules';
+import {  DetailsScreen, CameraScreen, PhotosScreen, CameraScanner, SettingsScreen} from '../modules';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
@@ -42,7 +42,7 @@ const HomeStack = (props:any) => {
         />
         <Stack.Screen
           name="Settings"
-          component={DetailsScreen}
+          component={SettingsScreen}
           options={{ title: 'Details Page B' }}
         />
         <Stack.Screen

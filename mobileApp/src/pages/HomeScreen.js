@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
 
   const store = useStore();
   store.subscribe(() => {
-    console.log('A006=>' + new Date().toString(), store.getState())
+  //  console.log('A006=>' + new Date().toString(), store.getState())
   });
   // navigation.navigate('Photossa');
   return (
@@ -67,7 +67,7 @@ const HomeScreen = ({ navigation }) => {
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('_Camera')}>
+            onPress={() => navigation.navigate('M_Camera')}>
             <Text>Camera</Text>
           </TouchableOpacity>
 

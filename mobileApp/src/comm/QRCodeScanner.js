@@ -16,7 +16,6 @@ class QRCodeScanner extends React.Component {
   componentDidMount() {
     const me = this;
     BarCodeScanner.getPermissionsAsync().then((status) => {
-      console.log(status);
       if (status.status !== 'granted') {
         BarCodeScanner.requestPermissionsAsync().then((status)=>{
           me.setState({'hasPermission' : (status.status === 'granted')});

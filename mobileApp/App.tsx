@@ -24,7 +24,7 @@ export default function App() {
   // const dispatch = useDispatch();
   useEffect(() => {
     store.subscribe(() => {
-        console.log('A007=>' + new Date().toString(), store.getState())
+      //  console.log('A007=>' + new Date().toString(), store.getState())
       });
   }, []);
   return (

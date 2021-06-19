@@ -24,24 +24,19 @@ class IpfsUpload extends React.Component {
    }
   syncFile(fn) {
     const me = this;
-    console.log('A01->')
     const ipfs = new IPFS();
     ipfs.setProvider({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-    console.log('A1->')
     FileSystem.readAsStringAsync(fn,  
       { encoding: FileSystem.EncodingType.Base64 }).then((content) => {
    }).catch((err) => {
-     console.log('err=>', err);
    })
   }
   componentDidUpdate (prevProps, prevState) {
-    // console.log(this.props.source);
     if (this.props.source !== prevProps.source) {
       this.setState({fn:this.props.source});
         
     }
     if (this.state.fn !== prevState.fn && !!this.state.fn) {
-      // console.log(this.state.fn)
       this.syncFile(this.state.fn);
     }
     return true;

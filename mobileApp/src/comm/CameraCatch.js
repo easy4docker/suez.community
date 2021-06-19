@@ -68,7 +68,7 @@ export default function CameraCatch(props) {
            <Text style={styles.cameraReverseButton}>
             <MaterialIcons style={{justifyContent: 'flex-end'}} name="home" size={36} color="red" 
                 onPress={() => {
-                  console.log(props.navigation);
+                 // console.log(props.navigation);
                     props.navigation.navigate('Home')
                     // props.navigation.navigate('CommStack')
                     
